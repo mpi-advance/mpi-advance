@@ -3,8 +3,8 @@ project(MPI_Advance VERSION 1.0.0 LANGUAGES C)
 
 option(SPACK "system is being built using SPACK" OFF)
 option(MPIA_PC "build MPIPCL shared library." ON)
-option(MPIA_ST "Build MPIA Stream Triggering Library." ON)
-option(MPIA_TA "BUILD MPIA Topology Aware Libraries." ON)
+option(MPIA_ST "Build MPIA Stream Triggering Library." OFF)
+option(MPIA_TA "BUILD MPIA Topology Aware Libraries." OFF)
 option(CUDA_SUPPORT "BUILD WITH CUDA BACKENDS" OFF)
 option(HIP "BUILD WITH HIP BACKENDS" OFF)
 option(CXI "BUILD WITH CXI BACKENDS" OFF)
@@ -12,8 +12,6 @@ option(HPE "BUILD WITH HPE BACKENDS" OFF)
 option(BUILD_TESTS "BUILD Tests and examples" OFF)
 
 include_directories(./include)
-
-
 
 if(NOT SPACK)
 	message(STATUS, "NO SPACK DETECTED")

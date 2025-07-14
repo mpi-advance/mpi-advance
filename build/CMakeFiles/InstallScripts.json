@@ -1,0 +1,28 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/aworley/MPI_advance/mpi-advance/build/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/MPIPCL/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/MPIPCL/src/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/MPIPCL/src/bindings/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/MPIPCL/src/pt2pt/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/MPIPCL/include/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/include/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/source/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/source/core/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/source/core/source/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/source/core/source/queues/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/stream-triggering/source/bindings/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/utils/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/communicator/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/persistent/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/collective/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/neighborhood/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/collective/tests/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/src/neighborhood/tests/cmake_install.cmake",
+		"/home/aworley/MPI_advance/mpi-advance/build/locality_aware/benchmarks/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

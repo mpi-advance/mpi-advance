@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wall -Wextra -Wpedantic -Wshadow CMakeFiles/microbenchmarks.dir/microbenchmarks.cpp.o -o microbenchmarks  -Wl,-rpath,/home/aworley/MPI_advance/mpi-advance/build/locality_aware ../libmpi_advance.so /usr/lib/x86_64-linux-gnu/libmpichcxx.so /usr/lib/x86_64-linux-gnu/libmpich.so /usr/lib/gcc/x86_64-linux-gnu/11/libgomp.so /usr/lib/x86_64-linux-gnu/libpthread.a

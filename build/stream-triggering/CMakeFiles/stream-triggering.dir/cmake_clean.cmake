@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Barrier_init.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Barrier_init.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Enqueue_start.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Enqueue_start.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Enqueue_startall.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Enqueue_startall.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Enqueue_waitall.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Enqueue_waitall.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Is_matched.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Is_matched.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Match.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Match.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_free.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_free.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_init.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_init.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_match.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_match.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_wait.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Queue_wait.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Recv_init.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Recv_init.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Request_free.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Request_free.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Request_freeall.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Request_freeall.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Request_wait.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Request_wait.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Send_init.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPIX_Send_init.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPI_Overrides.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/MPI_Overrides.cc.o.d"
+  "CMakeFiles/stream-triggering.dir/source/bindings/constants.cc.o"
+  "CMakeFiles/stream-triggering.dir/source/bindings/constants.cc.o.d"
+  "libstream-triggering.pdb"
+  "libstream-triggering.so"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/stream-triggering.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

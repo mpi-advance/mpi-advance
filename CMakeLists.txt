@@ -13,7 +13,10 @@ option(BUILD_TESTS "BUILD Tests and examples" OFF)
 
 include_directories(./include)
 
+
+
 if(NOT SPACK)
+	message(STATUS, "NO SPACK DETECTED")
 	set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/installed" CACHE PATH "install prefix" FORCE)
 endif(NOT SPACK)
 

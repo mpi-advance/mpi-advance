@@ -10,12 +10,15 @@ option(HIP "BUILD WITH HIP BACKENDS" OFF)
 option(CXI "BUILD WITH CXI BACKENDS" OFF)
 option(HPE "BUILD WITH HPE BACKENDS" OFF)
 option(BUILD_TESTS "BUILD Tests and examples" OFF)
-
-include_directories(./include)
-
+vim b
+#include_directories(./include)
+message(STATUS, "MPIA_PC = ${MPIA_PC}")
+message(STATUS, "MPIA_ST = ${MPIA_ST}")
+message(STATUS, "MPIA_TA = ${MPIA_TA}")
+message(STATUS, "CHECK")
 if(NOT SPACK)
 	message(STATUS, "NO SPACK DETECTED")
-	set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/installed" CACHE PATH "install prefix" FORCE)
+	#set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/installed" CACHE PATH "install prefix" FORCE)
 else()
 	message(STATUS, "SPACK DETECTED")
 endif(NOT SPACK)
@@ -24,9 +27,8 @@ if(MPIA_PC)
 	if(BUILD_TESTS)
 		set(BUILD_EXAMPLES ON)
 		set(EXAMPLES_TO_BIN ON)
-	endif()
+	endif(BUILD_TESTS)
 	add_subdirectory(./MPIPCL)
-	
 endif(MPIA_PC)
 
 if(MPIA_ST)
@@ -57,5 +59,4 @@ if(MPIA_TA)
 	endif()
 	add_subdirectory(./locality_aware)
 endif(MPIA_TA)
-
 

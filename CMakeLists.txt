@@ -10,7 +10,7 @@ option(HIP "BUILD WITH HIP BACKENDS" OFF)
 option(CXI "BUILD WITH CXI BACKENDS" OFF)
 option(HPE "BUILD WITH HPE BACKENDS" OFF)
 option(BUILD_TESTS "BUILD Tests and examples" OFF)
-vim b
+
 #include_directories(./include)
 message(STATUS, "MPIA_PC = ${MPIA_PC}")
 message(STATUS, "MPIA_ST = ${MPIA_ST}")

@@ -3,8 +3,9 @@
 	url = https://github.com/mpi-advance/MPIPCL.git
 [submodule "locality_aware"]
 	path = locality_aware
-	url = https://github.com/mpi-advance/locality_aware
-	branch = cleanup
+	url = https://github.com/aworley16/locality_aware.git
+	branch = feat-rename-MPIX-to-MPIL
+
 [submodule "stream-triggering"]
 	path = stream-triggering
 	url = https://github.com/mpi-advance/stream-triggering

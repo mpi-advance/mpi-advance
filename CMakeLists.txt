@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17 FATAL_ERROR) 
+  nbvhgjcmake_minimum_required(VERSION 3.17 FATAL_ERROR) 
 project(MPI_Advance VERSION 1.0.0 LANGUAGES C)
 
 option(SPACK "system is being built using SPACK" OFF)
@@ -65,3 +65,22 @@ if(MPIA_LA)
 	add_subdirectory(./locality_aware)
 endif(MPIA_LA)
 
+include(EXPORT MPIAdvanceTargets
+	NAMESPACE MPIAdvance::
+	DESTINATION ${CMAKE_INSTALL_LIBDIR}/MPIAdvance
+}
+
+# Configure the file MyProjectConfig.cmake.in
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/MPIAdvance.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/MPIAdvanceConfig.cmake"
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/MPIAdvance
+    NO_SET_AND_CHECK_VERSION
+    NO_CHECK_REQUIRED_COMPONENTS
+)
+
+# Install the generated config file.
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/MPIAdvanceConfig.cmake"
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/MPIAdvance
+)

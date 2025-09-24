@@ -95,19 +95,3 @@ install(FILES
  #       NAMESPACE MPIAdvance::
 #        DESTINATION share/${PROJECT_NAME})
 
-----------------------------------------------------------------
-
-
-# Install the actual target(s) and register them for export
-
-
-
-## Version file
-
-
-# install(FILES
-	# ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config-version.cmake
-	# ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-	# DESTINATION share/${PROJECT_NAME}
-# )
-

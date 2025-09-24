@@ -75,7 +75,7 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/MPIAdvance-config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-	INSTALL_DESTINATION share/${PROJECT_NAME}
+	INSTALL_DESTINATION ${PROJECT_NAME}
 )
 
 write_basic_package_version_file(

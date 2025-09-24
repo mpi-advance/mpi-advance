@@ -1,4 +1,4 @@
 @PACKAGE_INIT@
 
-find_package(MPIAdvance::MPIPCL)
-find_package(MPIAdvance::locality_aware)
+find_package(MPIPCL)
+find_package(locality_aware)

@@ -1,4 +1,4 @@
-  nbvhgjcmake_minimum_required(VERSION 3.17 FATAL_ERROR) 
+cmake_minimum_required(VERSION 3.17 FATAL_ERROR) 
 project(MPI_Advance VERSION 1.0.0 LANGUAGES C)
 
 option(SPACK "system is being built using SPACK" OFF)

@@ -65,22 +65,49 @@ if(MPIA_LA)
 	add_subdirectory(./locality_aware)
 endif(MPIA_LA)
 
-include(EXPORT MPIAdvanceTargets
-	NAMESPACE MPIAdvance::
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/MPIAdvance
-}
+
+#install(TARGETS locality_aware
+#        EXPORT locality_awareTargets
+#        DESTINATION lib)
 
 # Configure the file MyProjectConfig.cmake.in
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/MPIAdvance.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/MPIAdvanceConfig.cmake"
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/MPIAdvance
-    NO_SET_AND_CHECK_VERSION
-    NO_CHECK_REQUIRED_COMPONENTS
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/MPIAdvance-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+	INSTALL_DESTINATION share/${PROJECT_NAME}
+)
+
+write_basic_package_version_file(
+	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config-version.cmake
+	COMPATIBILITY SameMinorVersion
 )
 
 # Install the generated config file.
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/MPIAdvanceConfig.cmake"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/MPIAdvance
+install(FILES 
+       	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config-version.cmake
+		${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+		DESTINATION share/${PROJECT_NAME}
 )
+
+# Export the targets into a CMake package
+#install(EXPORT MPIAdvanceTargets
+ #       NAMESPACE MPIAdvance::
+#        DESTINATION share/${PROJECT_NAME})
+
+----------------------------------------------------------------
+
+
+# Install the actual target(s) and register them for export
+
+
+
+## Version file
+
+
+# install(FILES
+	# ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config-version.cmake
+	# ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+	# DESTINATION share/${PROJECT_NAME}
+# )
+

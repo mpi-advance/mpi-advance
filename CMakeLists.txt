@@ -49,6 +49,7 @@ if(MPIA_ST)
 	if(HPE)
 		set(USE_HPE_BACKEND ON)
 	endif()
+	message(STATUS "Adding ST")
 	add_subdirectory(./stream-triggering)
 endif(MPIA_ST)
 

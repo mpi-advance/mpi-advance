@@ -10,3 +10,4 @@
 [submodule "stream-triggering"]
 	path = stream-triggering
 	url = https://github.com/mpi-advance/stream-triggering
+	branch = feat-doxygen

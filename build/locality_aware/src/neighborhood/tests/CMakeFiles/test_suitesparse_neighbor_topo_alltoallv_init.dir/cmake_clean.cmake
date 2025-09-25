@@ -1,0 +1,12 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/test_suitesparse_neighbor_topo_alltoallv_init.dir/link.d"
+  "CMakeFiles/test_suitesparse_neighbor_topo_alltoallv_init.dir/test_suitesparse_neighbor_topo_alltoallv_init.cpp.o"
+  "CMakeFiles/test_suitesparse_neighbor_topo_alltoallv_init.dir/test_suitesparse_neighbor_topo_alltoallv_init.cpp.o.d"
+  "test_suitesparse_neighbor_topo_alltoallv_init"
+  "test_suitesparse_neighbor_topo_alltoallv_init.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/test_suitesparse_neighbor_topo_alltoallv_init.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

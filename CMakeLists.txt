@@ -3,8 +3,8 @@ project(MPIAdvance VERSION 1.0.0 LANGUAGES C)
 
 option(SPACK "system is being built using SPACK" OFF)
 option(MPIA_PC "build MPIPCL shared library." ON)
-option(MPIA_ST "Build MPIA Stream Triggering Library." OFF)
-option(MPIA_LA "BUILD MPIA Topology Aware Libraries." OFF)
+option(MPIA_ST "Build MPIA Stream Triggering Library." ON)
+option(MPIA_LA "BUILD MPIA Topology Aware Libraries." ON)
 option(CUDA_SUPPORT "BUILD WITH CUDA BACKENDS" OFF)
 option(HIP "BUILD WITH HIP BACKENDS" OFF)
 option(CXI "BUILD WITH CXI BACKENDS" OFF)
@@ -66,10 +66,6 @@ if(MPIA_LA)
 endif(MPIA_LA)
 
 
-#install(TARGETS locality_aware
-#        EXPORT locality_awareTargets
-#        DESTINATION lib)
-
 # Configure the file MyProjectConfig.cmake.in
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
@@ -92,6 +88,6 @@ install(FILES
 
 # Export the targets into a CMake package
 #install(EXPORT MPIAdvanceTargets
- #       NAMESPACE MPIAdvance::
-#        DESTINATION share/${PROJECT_NAME})
+#       NAMESPACE MPIAdvance::
+#       DESTINATION share/${PROJECT_NAME})
 

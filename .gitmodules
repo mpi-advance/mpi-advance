@@ -1,6 +1,7 @@
 [submodule "MPIPCL"]
 	path = MPIPCL
 	url = https://github.com/mpi-advance/MPIPCL.git
+	branch = aw-reorg
 	
 [submodule "locality_aware"]
 	path = locality_aware

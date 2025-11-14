@@ -31,13 +31,13 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
 
     homepage = "https://github.com/mpi-advance"
     url =" https://github.com/mpi-advance/mpi-advance.git"
-    git = "git@github.com:aworley16/Advance_testing.git"
+    git = "git@github.com:mpi-advance/mpi-advance.git"
 
-    maintainers("aworley16", "JStewart28")
+    maintainers("aworley16", "JStewart28", "TheMasterDirk")
 
     license("BSD-3-Clause")
     
-    version("main", submodules=True)
+    version("main", branch="experimental", submodules=True)
     
     depends_on("c", type="build")
     depends_on("cxx", type="build")

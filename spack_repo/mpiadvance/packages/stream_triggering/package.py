@@ -42,7 +42,7 @@ class StreamTriggering(CMakePackage, CudaPackage, ROCmPackage):
     license("BSD-3-Clause")
 
     # FIXME: Add proper versions here.
-    version("1.0", branch="main")
+    version("0.5.0", branch="main")
 
     depends_on("c", type="build")
     depends_on("cxx", type="build")

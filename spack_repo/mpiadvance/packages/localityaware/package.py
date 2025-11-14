@@ -27,7 +27,7 @@ from spack_repo.builtin.build_systems.generic import Package
 from spack.package import *
 
 
-class LocalityAwareGit(CMakePackage, CudaPackage, ROCmPackage):
+class LocalityAware(CMakePackage, CudaPackage, ROCmPackage):
     """FIXME: Put a proper description of your package here."""
     """Locality-aware optimizations for standard MPI collectives as well as neighborhood collectives."""
 

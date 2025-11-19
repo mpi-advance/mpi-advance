@@ -1,0 +1,61 @@
+Types of Proposals
+ - Hard (Demand)
+	- High / Low priority
+	    --- what if Demand not met?
+		
+ - Soft (Requests)
+	- Leases (Loans/Sublet offers)
+    - Buy offers	
+	 
+Actions
+ - Buy (Obtain more nodes, premium for preempted nodes) 
+ - Sublet(Loan, temp release of resource, changes to high priority demand at end of sublet)
+ - Sell (Release resources)
+ - Seized (Preempted by system)
+
+--- How to signal process of scheduled loss, how should process deal with it. How much head time is needed for clean transfer? - Likely application dependent - Query app?
+    -- continue to end of alloc
+	-- abort early (if subletting terminate clause early)
+--- How to handle hardware errors, soft (see the error coming), hard (sudden catatropic error). 	
+
+
+Priority
+   - scaliablity 
+       - strong
+	   - weak
+	- req size
+	- min size
+	- max size
+	
+Items to be updated dynamically
+		- min size
+		- max size
+		- progress
+		
+credits -- what if min/max changes?? - add buffer amount?? - 
+    - penaltize massive overestimation by lower priority.... kind of what backfill system currently does indirectly. 
+    time X maximum nodes?
+	assume 100% efficiency at min nodes??? 
+	
+metrics
+ - System - acutal & effective utlization, span    actual = basic * effective? should always be 1 or less, the higher the better. Only useful at end, not during runtime
+                                                   Runtime metric??? --- Footprint (should not penalize score if pending queue empty and footprint < resources available)
+												                     --- Elasticity (how much room to maneuver things around)
+																	 --- Instant effective utilization (only useful if scaliablity curve is known)
+																	 --- Num job runnning
+Penality for high Priority???
+													
+ - User - general slowdown, tat 
+
+
+----------------------------------------------------------------------------------------------------------
+What is a Tensor?
+Tensor workflow looks to fit model, potentially
+Use single interation -
+Linear Regression, Bayesian Ridge, Ploynomial Regression
+Decision Tree, graidnt boost 
+vector regression , gaussian process Regression, Kernal ridge
+
+
+
+	

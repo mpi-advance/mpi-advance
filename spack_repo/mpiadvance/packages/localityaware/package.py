@@ -39,7 +39,7 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
 
     license("BSD-3-Clause")
 
-    version("1.2", branch="develop")
+    version("2.0.0")
     
     
     depends_on("c", type="build")

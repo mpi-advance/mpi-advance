@@ -34,7 +34,7 @@ class StreamTriggering(CMakePackage, CudaPackage, ROCmPackage):
     url = "https://github.com/mpi-advance/stream-triggering.git"
     git = "git@github.com:mpi-advance/stream-triggering.git"
     # List of GitHub accounts to notify when the package is updated.
-    maintainers("aworley16")
+    maintainers("aworley16", "TheMasterDirk")
 
     # FIXME: Add the SPDX identifier of the project's license below.
     # See https://spdx.org/licenses/ for a list. Upon manually verifying

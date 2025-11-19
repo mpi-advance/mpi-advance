@@ -28,7 +28,6 @@ from spack.package import *
 
 
 class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
-    """FIXME: Put a proper description of your package here."""
     """Locality-aware optimizations for standard MPI collectives as well as neighborhood collectives."""
 
     git = "git@github.com:mpi-advance/locality_aware.git"
@@ -39,7 +38,7 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
 
     license("BSD-3-Clause")
 
-    version("2.0.0")
+    version("2.0.0", tag='v2.0.0')
     
     
     depends_on("c", type="build")

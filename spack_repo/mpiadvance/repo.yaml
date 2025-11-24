@@ -1,4 +1,4 @@
-# Define the namespace for CUP-ECS packages
+# Define the namespace for mpiadvance packages
 repo:
   namespace: mpiadvance
   api: v2.0 # Or newer

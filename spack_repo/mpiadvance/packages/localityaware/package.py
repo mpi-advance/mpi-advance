@@ -29,12 +29,11 @@ from spack.package import *
 
 class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
     """Locality-aware optimizations for standard MPI collectives as well as neighborhood collectives."""
-
+    homepage = "https://github.com/mpi-advance/locality_aware"
+    url = "https://github.com/mpi-advance/locality_aware"
     git = "git@github.com:mpi-advance/locality_aware.git"
-    # FIXME: Add a list of GitHub accounts to
-    # notify when the package is updated.
-    # maintainers("github_user1", "github_user2")
-    maintainers("bienz2", "JStewart28")
+
+    maintainers("aworley16", "TheMasterDirk", "bienz2")
 
     license("BSD-3-Clause")
 
@@ -45,9 +44,10 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
     depends_on("cxx", type="build")
 
     # Variants are primarily backends to build on GPU systems and pass the right
-    # informtion to the packages we depend on
-    # variant("cuda", default=False, description="Use CUDA support from subpackages")
-    # variant("openmp", default=False, description="Use OpenMP support from subpackages")
+    # information to the packages we depend on
+    variant("cuda", default=False, description="Build with CUDA support")
+    variant("openmp", default=False, description="Build with OpenMP support")
+    variant("rocm", default=False, description="Build with HIP support")
 
     # MPI dependencies
     depends_on("mpi")
@@ -64,17 +64,7 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
     
     conflicts("+cuda", when="cuda_arch=none")
     conflicts("+rocm", when="amdgpu_target=none")
-
-    # If we're using CUDA or ROCM, require MPIs be GPU-aware
-    conflicts("mpich ~cuda", when="+cuda")
-    conflicts("mpich ~rocm", when="+rocm")
-    conflicts("openmpi ~cuda", when="+cuda")
-    conflicts("^intel-mpi")  # Heffte won't build with intel MPI because of needed C++ MPI support
-    # Commenting so we can test C++20 and cuda@12.2.1 on Lassen
-    # Commenting so we can test C++20 and cuda@12.2.1 on Lassen
-    # conflicts("^spectrum-mpi", when="^cuda@11.3:") # cuda-aware spectrum is broken with cuda 11.3:
-
-
+  
     # CMake specific build functions
     def cmake_args(self):
         args = []

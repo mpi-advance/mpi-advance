@@ -37,77 +37,55 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
 
     license("BSD-3-Clause")
     
-    version("main", branch="experimental", submodules=True)
+    version("main", submodules=True)
     
     depends_on("c", type="build")
     depends_on("cxx", type="build")
     
     # Variants are primarily backends to build on GPU systems and pass the right
-    # informtion to the packages we depend on
-    variant("cuda", default=False, description="Use CUDA support from subpackages")
+    # information to the packages we depend on
+    variant("cuda", default=False, description="Build sub-packages with CUDA support if possible")
+    variant("rocm", default=False, description="Build sub-packages with HIP support if available")
     variant("openmp", default=False, description="Use OpenMP support from subpackages")
     
-    # varients for disabling various sublibraries
+    # varients for disabling various sub-packages
     variant("pcl", default=True, description="Build MPIPCL library")
     variant("st",  default=True, description="Build Stream-triggering library")
-    variant("la",  default=True, description="Build Stream-triggering library")
+    variant("la",  default=True, description="Build locality-aware library")
     variant("tests", default=False, description="Build examples and test programs")
-    variant("cuda", default=False, description="Build MPIPCL library")
-
+    
     # MPI dependencies
     depends_on("mpi")
     with when("+cuda"):
         depends_on("mpich +cuda", when="^[virtuals=mpi] mpich")
         depends_on("mvapich +cuda", when="^[virtuals=mpi] mvapich")
         depends_on("mvapich2 +cuda", when="^[virtuals=mpi] mvapich2")
-        #depends_on("mvapich2-gdr +cuda", when="^[virtuals=mpi] mvapich2-gdr")
         depends_on("openmpi +cuda", when="^[virtuals=mpi] openmpi")
 
     with when("+rocm"):
         depends_on("mpich +rocm", when="^[virtuals=mpi] mpich")
-        #depends_on("mvapich2-gdr +rocm", when="^[virtuals=mpi] mvapich2-gdr")
-    
+       
     conflicts("+cuda", when="cuda_arch=none")
     conflicts("+rocm", when="amdgpu_target=none")
-
-    # If we're using CUDA or ROCM, require MPIs be GPU-aware
-    conflicts("mpich ~cuda", when="+cuda")
-    conflicts("mpich ~rocm", when="+rocm")
-    conflicts("openmpi ~cuda", when="+cuda")
-    conflicts("^intel-mpi")  # Heffte won't build with intel MPI because of needed C++ MPI support
-    # Commenting so we can test C++20 and cuda@12.2.1 on Lassen
-    # conflicts("^spectrum-mpi", when="^cuda@11.3:") # cuda-aware spectrum is broken with cuda 11.3:
 
     # CMake specific build functions
     def cmake_args(self):
         args = []
-        print("!!--!!")
         args.append("-DSPACK=ON")
         #Parse libraries NOT to be installed. 
         if self.spec.satisfies("+pcl"):
-            print("PC SET")
             args.append("-DMPIA_PC=ON")
-        else:
-            print("PC NOT SET")
             
         if self.spec.satisfies("+st"):
-            print("ST SET")
             args.append("-DMPIA_ST=ON")          
-        else:
-            print("ST NOT SET") 
             
         if self.spec.satisfies("+la"):
-            print("LA SET")
             args.append("-DMPIA_LA=ON")
-        else:
-            print("LA NOT SET")   
         
         #add in tests if requested
         if self.spec.satisfies("+tests"):
-            print("TESTS TO BE BUILT")
             args.append("-BUILD_TESTS=ON")        #for MPIPCL
             args.append("-DENABLE_UNIT_TESTS=ON") #for locality_aware
-        args.append("-DSPACK=ON")                 #change to spack install location instead of default. 
         
         # If using CUDA, add flags to activate CUDA build options and arch. 
         if self.spec.satisfies("+cuda"):
@@ -119,7 +97,6 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
             #turn on cuda flags for each of the sub-modules. 
             if self.spec.satisfies("la"):
                 args.append("-DUSE_CUDA=ON")
-                #args.append("-DCMAKE_CUDA_ARCHITECTURES=\"75\"")
             if self.spec.satisfies("st"):
                 args.append("-DUSE_CUDA_BACKEND=ON")
           

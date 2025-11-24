@@ -10,8 +10,7 @@ from spack.package import *
 
 class Mpipcl(CMakePackage):
     """An open source shared library that implements the partitioned communication interface approved in MPI 4.0
-
-        mpipcl is a part of the MPI-Advance Project developed and maintained by CUP-ECS.
+        mpipcl is a part of the MPI-Advance Project developed.
     """
 
     homepage = "https://github.com/mpi-advance/MPIPCL.git"
@@ -33,11 +32,7 @@ class Mpipcl(CMakePackage):
     variant("static_libs", default=False, description="Build static MPIPCL library instead of shared library")
     variant("debug", default=False, description="Turn on debug statments inside library")
     variant("examples", default=False, description="Build Example programs")
-    variant("unique_names", default=False, description="Changes the names of functions to use MPIP instead of MPIX")
-
-    conflicts(
-        "+examples", when="+unique_names", msg="No examples currently exist when using +unique_names"
-    )
+    variant("~benchmarks", default=True, description="Do not build benchmarks programs")
     
     depends_on("c", type="build")
     depends_on("cxx", type="build")
@@ -53,7 +48,6 @@ class Mpipcl(CMakePackage):
         if self.spec.satisfies("+examples"):
             args.append("-DBUILD_EXAMPLES=ON")
             args.append("-DEXAMPLES_TO_BIN=ON")
-        if self.spec.satisfies("+unique_names"):
-            args.append("-DUNIQUE_NAMES=ON")
-
+        if self.spec.satisfies("~benchmarks"):
+            args.append("-DBENCHMARKS=OFF")
         return args

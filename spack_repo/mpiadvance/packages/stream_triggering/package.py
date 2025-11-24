@@ -27,9 +27,8 @@ from spack.package import *
 
 
 class StreamTriggering(CMakePackage, CudaPackage, ROCmPackage):
-    """FIXME: Put a proper description of your package here."""
+    """An MPI Advance library exploring various stream triggering APIs."""
 
-    # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://github.com/mpi-advance/stream-triggering.git"
     url = "https://github.com/mpi-advance/stream-triggering.git"
     git = "git@github.com:mpi-advance/stream-triggering.git"
@@ -41,20 +40,31 @@ class StreamTriggering(CMakePackage, CudaPackage, ROCmPackage):
     # the license, set checked_by to your Github username.
     license("BSD-3-Clause")
 
-    # FIXME: Add proper versions here.
     version("0.5.0", branch="main")
-
-    depends_on("c", type="build")
-    depends_on("cxx", type="build")
-
+    
     variant("threads", default=True, description="USE Thread backend")
     variant("cuda", default=False, description="Use CUDA backend")
     variant("cxi", default=False, description="Use CXI backend")
-    variant("hip", default=False, description="Use HIP backend")
+    variant("rocm", default=False, description="Use HIP backend")
    
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+    
+    depends_on("mpi")
+    with when("+cuda"):
+        depends_on("mpich +cuda", when="^[virtuals=mpi] mpich")
+        depends_on("mvapich +cuda", when="^[virtuals=mpi] mvapich")
+        depends_on("mvapich2 +cuda", when="^[virtuals=mpi] mvapich2")
+        depends_on("mvapich2-gdr +cuda", when="^[virtuals=mpi] mvapich2-gdr")
+        depends_on("openmpi +cuda", when="^[virtuals=mpi] openmpi")
 
-    # FIXME: Add dependencies if required.
-    # depends_on("foo")
+    with when("+rocm"):
+        depends_on("mpich +rocm", when="^[virtuals=mpi] mpich")
+        depends_on("mvapich2-gdr +rocm", when="^[virtuals=mpi] mvapich2-gdr")
+    
+    conflicts("+cuda", when="cuda_arch=none")
+    conflicts("+rocm", when="amdgpu_target=none")
+
 
     def cmake_args(self):
         args = []

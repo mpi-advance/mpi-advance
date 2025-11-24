@@ -1,31 +1,17 @@
 cmake_minimum_required(VERSION 3.17 FATAL_ERROR) 
 project(MPIAdvance VERSION 1.0.0 LANGUAGES C)
 
-option(SPACK "system is being built using SPACK" OFF)
 option(MPIA_PC "build MPIPCL shared library." ON)
+
 option(MPIA_ST "Build MPIA Stream Triggering Library." ON)
+
 option(MPIA_LA "BUILD MPIA Topology Aware Libraries." ON)
+
 option(CUDA_SUPPORT "BUILD WITH CUDA BACKENDS" OFF)
 option(HIP "BUILD WITH HIP BACKENDS" OFF)
-option(CXI "BUILD WITH CXI BACKENDS" OFF)
-option(HPE "BUILD WITH HPE BACKENDS" OFF)
+option(CXI "BUILD STREAM TRIGGERING WITH CXI BACKENDS" OFF)
+option(HPE "BUILD STREAM TRIGGERING WITH HPE BACKENDS" OFF)
 option(BUILD_TESTS "BUILD Tests and examples" OFF)
-
-#include_directories(./include)
-message(STATUS, "MPIA_PC = ${MPIA_PC}")
-message(STATUS, "MPIA_ST = ${MPIA_ST}")
-message(STATUS, "MPIA_LA = ${MPIA_LA}")
-message(STATUS, "CHECK")
-
-if(NOT SPACK)
-	message(STATUS, "NO SPACK DETECTED")
-	#set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/installed" CACHE PATH "install prefix" FORCE)
-else()
-	message(STATUS, "SPACK DETECTED")
-	#set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}" CACHE PATH "install prefix" FORCE)
-endif(NOT SPACK)
-
-message(STATUS, "Install prefix = ${CMAKE_INSTALL_PREFIX}")
 
 if(MPIA_PC)
 	if(BUILD_TESTS)
@@ -56,7 +42,7 @@ endif(MPIA_ST)
 if(MPIA_LA)
 	if(USE_CUDA)
 	    set(USE_CUDA ON)
-    	endif()
+    endif()
 	if(HIP)
 		set(USE_HIP ON)
 	endif()

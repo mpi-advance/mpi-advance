@@ -2,3 +2,4 @@
 
 find_package(MPIPCL)
 find_package(locality_aware)
+find_package(stream_triggering)

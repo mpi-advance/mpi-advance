@@ -73,8 +73,8 @@ install(FILES
 		DESTINATION share/${PROJECT_NAME}
 )
 
-# Export the targets into a CMake package
-#install(EXPORT MPIAdvanceTargets
-#       NAMESPACE MPIAdvance::
-#       DESTINATION share/${PROJECT_NAME})
+#Export the targets into a CMake package
+install(EXPORT MPIAdvanceTargets
+      NAMESPACE MPIAdvance::
+      DESTINATION share/${PROJECT_NAME})
 

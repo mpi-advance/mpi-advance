@@ -32,7 +32,6 @@ class Mpipcl(CMakePackage):
     variant("static_libs", default=False, description="Build static MPIPCL library instead of shared library")
     variant("debug", default=False, description="Turn on debug statments inside library")
     variant("examples", default=False, description="Build Example programs")
-    variant("~benchmarks", default=True, description="Do not build benchmarks programs")
     
     depends_on("c", type="build")
     depends_on("cxx", type="build")

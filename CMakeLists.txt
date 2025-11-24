@@ -40,7 +40,7 @@ if(MPIA_ST)
 endif(MPIA_ST)
 
 if(MPIA_LA)
-	if(USE_CUDA)
+	if(CUDA_SUPPORT)
 	    set(USE_CUDA ON)
     endif()
 	if(HIP)

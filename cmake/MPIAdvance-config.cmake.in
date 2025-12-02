@@ -1,15 +1,18 @@
 @PACKAGE_INIT@
 
-if(MPIA_LA)
+set(USE_MPIA_LA @MPIA_LA@)
+if(USE_MPIA_LA)
 	find_package(locality_aware)
-endif(MPIA_LA)
+endif(USE_MPIA_LA)
 
-if(MPIA_PC)
+set(USE_MPIA_LA @MPIA_PC@)
+if(USE_MPIA_PC)
 	find_package(MPIPCL)
-endif(MPIA_PC)
+endif(USE_MPIA_PC)
 
-if(MPIA_ST)
+set(USE_MPIA_LA @MPIA_ST@)
+if(USE_MPIA_ST)
 	find_package(stream_triggering)
-endif(MPIA_ST)
+endif(USE_MPIA_ST)
 
 

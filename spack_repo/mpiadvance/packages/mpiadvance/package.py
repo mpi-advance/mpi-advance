@@ -54,25 +54,18 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
     variant("la",  default=True, description="Build locality-aware library")
     variant("tests", default=False, description="Build examples and test programs")
     
+    depends_on('mpipcl', when='+pcl')
+    depends_on('stream-triggering', when='+st')
+    depends_on('localityaware',  when='+la')
     # MPI dependencies
     depends_on("mpi")
-    with when("+cuda"):
-        depends_on("mpich +cuda", when="^[virtuals=mpi] mpich")
-        depends_on("mvapich +cuda", when="^[virtuals=mpi] mvapich")
-        depends_on("mvapich2 +cuda", when="^[virtuals=mpi] mvapich2")
-        depends_on("openmpi +cuda", when="^[virtuals=mpi] openmpi")
 
-    with when("+rocm"):
-        depends_on("mpich +rocm", when="^[virtuals=mpi] mpich")
-       
-    conflicts("+cuda", when="cuda_arch=none")
-    conflicts("+rocm", when="amdgpu_target=none")
 
     # CMake specific build functions
     def cmake_args(self):
         args = []
         args.append("-DSPACK=ON")
-        #Parse libraries NOT to be installed. 
+        # #Parse libraries NOT to be installed. 
         if self.spec.satisfies("+pcl"):
             args.append("-DMPIA_PC=ON")
             
@@ -82,47 +75,47 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
         if self.spec.satisfies("+la"):
             args.append("-DMPIA_LA=ON")
         
-        #add in tests if requested
-        if self.spec.satisfies("+tests"):
-            args.append("-BUILD_TESTS=ON")        #for MPIPCL
-            args.append("-DENABLE_UNIT_TESTS=ON") #for locality_aware
+        # #add in tests if requested
+        # if self.spec.satisfies("+tests"):
+            # args.append("-BUILD_TESTS=ON")        #for MPIPCL
+            # args.append("-DENABLE_UNIT_TESTS=ON") #for locality_aware
         
-        # If using CUDA, add flags to activate CUDA build options and arch. 
-        if self.spec.satisfies("+cuda"):
-            print("BUILDING CUDA SUPPORT")
-            mystring = ', '.join(map(str, self.spec.variants["cuda_arch"].value)) 
-            print("detected arch values:" + mystring)
-            cuda_val = "-DCMAKE_CUDA_ARCHITECTURES=" + mystring
-            args.append(cuda_val)
-            #turn on cuda flags for each of the sub-modules. 
-            if self.spec.satisfies("la"):
-                args.append("-DUSE_CUDA=ON")
-            if self.spec.satisfies("st"):
-                args.append("-DUSE_CUDA_BACKEND=ON")
+        # # If using CUDA, add flags to activate CUDA build options and arch. 
+        # if self.spec.satisfies("+cuda"):
+            # print("BUILDING CUDA SUPPORT")
+            # mystring = ', '.join(map(str, self.spec.variants["cuda_arch"].value)) 
+            # print("detected arch values:" + mystring)
+            # cuda_val = "-DCMAKE_CUDA_ARCHITECTURES=" + mystring
+            # args.append(cuda_val)
+            # #turn on cuda flags for each of the sub-modules. 
+            # if self.spec.satisfies("la"):
+                # args.append("-DUSE_CUDA=ON")
+            # if self.spec.satisfies("st"):
+                # args.append("-DUSE_CUDA_BACKEND=ON")
           
-        # If using HIP or ROCM, use hpicc instead of changing the CMAKE_CXX_COMPILER. 
-        # Doing this perserves the spack wrapper and the integrated rpath setting from 
-        # the spec. 
-        if self.spec.satisfies("+rocm"):
-            env["SPACK_CXX"] = self.spec["hip"].hipcc
-        # If we're building with cray mpich, we need to make sure we get the GTL library for
-        # gpu-aware MPI
-        if self.spec.satisfies("+rocm ^cray-mpich"):
-            gtl_dir = join_path(self.spec["cray-mpich"].prefix, "..", "..", "..", "gtl", "lib")
-            args.append(
-                "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-rpath={0} -L{0} -lmpi_gtl_hsa".format(gtl_dir)
-            )
-        elif self.spec.satisfies("+cuda ^cray-mpich"):
-            gtl_dir = join_path(self.spec["cray-mpich"].prefix, "..", "..", "..", "gtl", "lib")
-            args.append(
-                "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-rpath={0} -L{0} -lmpi_gtl_cuda".format(gtl_dir)
-            )
+        # # If using HIP or ROCM, use hpicc instead of changing the CMAKE_CXX_COMPILER. 
+        # # Doing this perserves the spack wrapper and the integrated rpath setting from 
+        # # the spec. 
+        # if self.spec.satisfies("+rocm"):
+            # env["SPACK_CXX"] = self.spec["hip"].hipcc
+        # # If we're building with cray mpich, we need to make sure we get the GTL library for
+        # # gpu-aware MPI
+        # if self.spec.satisfies("+rocm ^cray-mpich"):
+            # gtl_dir = join_path(self.spec["cray-mpich"].prefix, "..", "..", "..", "gtl", "lib")
+            # args.append(
+                # "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-rpath={0} -L{0} -lmpi_gtl_hsa".format(gtl_dir)
+            # )
+        # elif self.spec.satisfies("+cuda ^cray-mpich"):
+            # gtl_dir = join_path(self.spec["cray-mpich"].prefix, "..", "..", "..", "gtl", "lib")
+            # args.append(
+                # "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-rpath={0} -L{0} -lmpi_gtl_cuda".format(gtl_dir)
+            # )
         
-        #Set hip flags in the submodules
-        if self.spec.satisfies("la"):
-            args.append("-DUSE_HIP=ON")
-        if self.spec.satisfies("st"):
-            args.append("-DUSE_HIP_BACKEND=ON")
+        # #Set hip flags in the submodules
+        # if self.spec.satisfies("la"):
+            # args.append("-DUSE_HIP=ON")
+        # if self.spec.satisfies("st"):
+            # args.append("-DUSE_HIP_BACKEND=ON")
         return args
 
     @run_after('install')

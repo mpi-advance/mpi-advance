@@ -1,5 +1,15 @@
 @PACKAGE_INIT@
 
-find_package(MPIPCL)
-find_package(locality_aware)
-find_package(stream_triggering)
+if(MPIA_LA)
+	find_package(locality_aware)
+endif(MPIA_LA)
+
+if(MPIA_PC)
+	find_package(MPIPCL)
+endif(MPIA_PC)
+
+if(MPIA_ST)
+	find_package(stream_triggering)
+endif(MPIA_ST)
+
+

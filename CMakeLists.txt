@@ -14,7 +14,8 @@ option(HPE "BUILD STREAM TRIGGERING WITH HPE BACKENDS" OFF)
 option(BUILD_TESTS "BUILD Tests and examples" OFF)
 set(SPACK FALSE CACHE BOOL "USE PACKAGES INSTEAD OF SUBMODULES IF BUILDING WITH SPACK")
 
-if(NOT SPACK)
+### IF DOING LIGHT BUILD, SKIP BUILDING SUBDIRECTORIES
+if(NOT BUILD_LIGHT)
 	if(MPIA_PC)
 		if(BUILD_TESTS)
 			set(BUILD_EXAMPLES ON CACHE BOOL "BUILD_EXAMPLES" FORCE)
@@ -53,7 +54,7 @@ if(NOT SPACK)
 		endif()
 		add_subdirectory(./locality_aware)
 	endif(MPIA_LA)
-endif(NOT SPACK)
+endif(NOT BUILD_LIGHT)
 
 # Configure the file MyProjectConfig.cmake.in
 include(CMakePackageConfigHelpers)

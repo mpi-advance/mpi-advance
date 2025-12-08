@@ -15,7 +15,7 @@ class Mpipcl(CMakePackage):
 
     homepage = "https://github.com/mpi-advance/MPIPCL.git"
     url = "https://github.com/mpi-advance/MPIPCL.git"
-    git = "git@github.com:mpi-advance/MPIPCL.git"
+    git = "https://github.com/mpi-advance/MPIPCL.git"
 
     maintainers("aworley16", "TheMasterDirk")
     license("BSD-3-Clause", checked_by="aworley16")

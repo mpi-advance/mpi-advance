@@ -31,7 +31,7 @@ class StreamTriggering(CMakePackage, CudaPackage, ROCmPackage):
 
     homepage = "https://github.com/mpi-advance/stream-triggering.git"
     url = "https://github.com/mpi-advance/stream-triggering.git"
-    git = "git@github.com:mpi-advance/stream-triggering.git"
+    git = "https://github.com/mpi-advance/stream-triggering.git"
     # List of GitHub accounts to notify when the package is updated.
     maintainers("aworley16", "TheMasterDirk")
 

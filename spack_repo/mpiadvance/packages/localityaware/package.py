@@ -31,7 +31,7 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
     """Locality-aware optimizations for standard MPI collectives as well as neighborhood collectives."""
     homepage = "https://github.com/mpi-advance/locality_aware"
     url = "https://github.com/mpi-advance/locality_aware"
-    git = "git@github.com:mpi-advance/locality_aware.git"
+    git = "https://github.com/mpi-advance/locality_aware"
 
     maintainers("aworley16", "TheMasterDirk", "bienz2")
 

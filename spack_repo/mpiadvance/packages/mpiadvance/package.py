@@ -31,7 +31,7 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
 
     homepage = "https://github.com/mpi-advance"
     url =" https://github.com/mpi-advance/mpi-advance.git"
-    git = "git@github.com:mpi-advance/mpi-advance.git"
+    git = "https://github.com/mpi-advance/mpi-advance.git"
 
     maintainers("aworley16", "JStewart28", "TheMasterDirk")
 

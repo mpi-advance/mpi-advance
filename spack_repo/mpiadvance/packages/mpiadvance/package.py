@@ -33,7 +33,7 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
     url =" https://github.com/mpi-advance/mpi-advance.git"
     git = "https://github.com/mpi-advance/mpi-advance.git"
 
-    maintainers("aworley16", "JStewart28", "TheMasterDirk")
+    maintainers("aworley16", "TheMasterDirk")
 
     license("BSD-3-Clause")
     
@@ -46,28 +46,15 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
     # information to the packages we depend on
     variant("cuda", default=False, description="Build sub-packages with CUDA support if possible")
     variant("rocm", default=False, description="Build sub-packages with HIP support if available")
-    variant("openmp", default=False, description="Use OpenMP support from subpackages")
     
     # varients for disabling various sub-packages
     variant("pcl", default=True, description="Build MPIPCL library")
     variant("st",  default=True, description="Build Stream-triggering library")
     variant("la",  default=True, description="Build locality-aware library")
     
-    depends_on("mpi")
-    when 
     depends_on('mpipcl', when='+pcl')
     depends_on('stream-triggering', when='+st')
     depends_on('localityaware',  when='+la')
-    
-    # depends_on('stream-triggering+cuda', when='+cuda')
-    # depends_on('localityaware+cuda', when='+cuda')
-    
-    # depends_on('stream-triggering+rocm', when='+rocm')
-    # depends_on('localityaware+rocm', when='+rocm')
-    
-    # conflicts("+cuda", when="cuda_arch=none")
-    # conflicts("+rocm", when="amdgpu_target=none")
-    
 
     # CMake specific build functions
     def cmake_args(self):
@@ -84,11 +71,3 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
             args.append("-DMPIA_LA=ON")
      
         return args
-
-    @run_after('install')
-    @on_package_attributes(test=True) # Run only when --test is provided
-    def check(self):
-        """Run CTest tests."""
-        with working_dir(self.build_directory):
-            ctest_command = ["ctest", "--output-on-failure"]
-            self.run_command(ctest_command)

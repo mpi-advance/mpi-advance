@@ -2,17 +2,17 @@
 
 set(USE_MPIA_LA @MPIA_LA@)
 if(USE_MPIA_LA)
-	find_package(locality_aware)
+	find_package(locality_aware REQUIRED)
 endif(USE_MPIA_LA)
 
 set(USE_MPIA_PC @MPIA_PC@)
 if(USE_MPIA_PC)
-	find_package(MPIPCL)
+	find_package(MPIPCL REQUIRED)
 endif(USE_MPIA_PC)
 
 set(USE_MPIA_ST @MPIA_ST@)
 if(USE_MPIA_ST)
-	find_package(stream_triggering)
+	find_package(stream_triggering REQUIRED)
 endif(USE_MPIA_ST)
 
 

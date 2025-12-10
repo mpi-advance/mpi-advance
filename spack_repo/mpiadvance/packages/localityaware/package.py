@@ -46,7 +46,6 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
     # Variants are primarily backends to build on GPU systems and pass the right
     # information to the packages we depend on
     variant("cuda", default=False, description="Build with CUDA support")
-    variant("openmp", default=False, description="Build with OpenMP support")
     variant("rocm", default=False, description="Build with HIP support")
 
     # MPI dependencies
@@ -68,8 +67,6 @@ class Localityaware(CMakePackage, CudaPackage, ROCmPackage):
     # CMake specific build functions
     def cmake_args(self):
         args = []
-
-
 
         # If we're building with cray mpich, we need to make sure we get the GTL library for
         # gpu-aware MPI

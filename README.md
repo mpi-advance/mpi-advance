@@ -11,6 +11,7 @@ This repository offers three modes of building, each of which will be explained 
 2. Manually installing some (or all)  MPI Advance libraries by other means, and then using this repository's `BUILD_LIGHT` CMake option to only install CMake files to make `find_package(MPIAdvance)` work
 3. Using the repository's spack package files provided in the custom spack repository.
 ### Building from source
+The first option to build the MPI Advance libraries is to build everything from this repository directly. Source code for the component libraries are included as git submodules, and can be built using Cmake and make. 
 
 #### Prerequisites
 While the CMake code for this repository only requires CMake 3.17 or newer, more prerequisites may be required if building the included git submodules. For exact prerequisites, please refer to the documentation of the MPI Advance packages you are building.
@@ -35,7 +36,7 @@ This repository offers the ability to choose which MPI Advance libraries get bui
 
 In addition to selection which libraries get build, there are other options that influence some of the libraries in the collection: 
 - `-DCUDA_SUPPORT` (OFF) : Build libraries with CUDA Support. In order to use this option you may need to provide the target GPU architecture if it is not set in the environment. The specific architecture of an NVIDIA GPU can be found by searching for the GPU model on NVIDIA's compute capability list and supplying the compute capability via -DCMAKE_CUDA_ARCHITECTURES. You should ignore the decimal when supplying the architecture. For example: a GeForce RTX 4080 has a compute capability of 8.9 thus to build for it you would use `-DCMAKE_CUDA_ARCHITECTURES=89.`
-- `-DHIP` (OFF) : Build libraries with HIP Support. Build the library with HIP support. In order to use this option you may need to provide the target GPU architecture if it is not set in the environment. The specific architecture of an AMD GPU can be found by searching for the GPU model at ROCM capability list and supplying the compute capability via -DCMAKE_HIP_ARCHITECTURES. For example: `-DCMAKE_HIP_ARCHITECTURES=gfx942`
+- `-DHIP_SUPPORT` (OFF) : Build libraries with HIP Support. Build the library with HIP support. In order to use this option you may need to provide the target GPU architecture if it is not set in the environment. The specific architecture of an AMD GPU can be found by searching for the GPU model at ROCM capability list and supplying the compute capability via -DCMAKE_HIP_ARCHITECTURES. For example: `-DCMAKE_HIP_ARCHITECTURES=gfx942`
 - `-DCXI` (OFF) : Build stream-triggering Library with CXI backend
 - `-DBUILD_TESTS` (OFF) : Build available examples and tests 
 

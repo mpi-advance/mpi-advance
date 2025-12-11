@@ -56,6 +56,14 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
     depends_on('stream-triggering', when='+st')
     depends_on('localityaware',  when='+la')
 
+    for cuda_arch in CudaPackage.cuda_arch_values:
+        depends_on(f'stream-triggering cuda_arch={cuda_arch}', when=f'+cuda +st cuda_arch={cuda_arch}')
+        depends_on(f'localityaware cuda_arch={cuda_arch}', when=f'+cuda +la cuda_arch={cuda_arch}')
+
+    for arch in ROCmPackage.amdgpu_targets:
+        depends_on(f'stream-triggering amdgpu_target={arch}', when=f'+rocm +st amdgpu_target={arch}')
+        depends_on(f'localityaware amdgpu_target={arch}', when=f'+rocm +la amdgpu_target={arch}')
+
     # CMake specific build functions
     def cmake_args(self):
         args = []
@@ -69,5 +77,5 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
             
         if self.spec.satisfies("+la"):
             args.append("-DMPIA_LA=ON")
-     
+          
         return args

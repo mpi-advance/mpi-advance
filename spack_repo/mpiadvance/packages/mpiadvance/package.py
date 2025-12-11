@@ -56,13 +56,20 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
     depends_on('stream-triggering', when='+st')
     depends_on('localityaware',  when='+la')
 
-    for cuda_arch in CudaPackage.cuda_arch_values:
-        depends_on(f'stream-triggering cuda_arch={cuda_arch}', when=f'+cuda +st cuda_arch={cuda_arch}')
-        depends_on(f'localityaware cuda_arch={cuda_arch}', when=f'+cuda +la cuda_arch={cuda_arch}')
+    conflicts("+cuda", when="+rocm")
+    conflicts("+rocm", when="cuda")
+    conflicts("+cuda", when="cuda_arch=none")
+    conflicts("+rocm", when="amdgpu_target=none")
 
-    for arch in ROCmPackage.amdgpu_targets:
-        depends_on(f'stream-triggering amdgpu_target={arch}', when=f'+rocm +st amdgpu_target={arch}')
-        depends_on(f'localityaware amdgpu_target={arch}', when=f'+rocm +la amdgpu_target={arch}')
+    with when("+cuda"):
+        for cuda_arch in CudaPackage.cuda_arch_values:
+            depends_on(f'stream-triggering cuda_arch={cuda_arch}', when=f' +st cuda_arch={cuda_arch}')
+            depends_on(f'localityaware cuda_arch={cuda_arch}', when=f' +la cuda_arch={cuda_arch}')
+
+    with when("+rocm"):
+        for arch in ROCmPackage.amdgpu_targets:
+            depends_on(f'stream-triggering amdgpu_target={arch}', when=f'+rocm +st amdgpu_target={arch}')
+            depends_on(f'localityaware amdgpu_target={arch}', when=f'+rocm +la amdgpu_target={arch}')
 
     # CMake specific build functions
     def cmake_args(self):

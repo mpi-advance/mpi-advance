@@ -62,14 +62,14 @@ To add the repo to your installation of spack.
 Inside the provided spack package repo, there is a individual package for each library well as a wrapper package that will install the others as dependencies.
 
 **Variants:**
-- ~PC: Do not build Partitioned Communication
-- ~ST: Do not build Stream-triggering
-- ~LA: Do not bUILD Locality_aware
-- +CUDA: Build with CUDA support**
-- +ROCM: Build with HIP support.** 
-- test: Enable unit testing where available. 
+- ~pc: Do not build Partitioned Communication
+- ~st: Do not build Stream-triggering
+- ~la: Do not bUILD Locality_aware
+- ++cuda: Build with CUDA support**
+- ++rocm: Build with HIP support.** 
+- ++test: Enable unit testing where available. 
 
-**If installing with CUDA or HIP support, you must provide either the `cuda_arch` or `hip_architecture` in your Spack environment or via command-line. 
+**If installing with CUDA or HIP support, you must provide either the `cuda_arch` or `amdgpu_target` in your Spack environment or via command-line. If provided via command line, it will be supplied to each of the the dependencies. 
 
 #### Using the Spack Packages
 You will need to load the package to add it to your path. `spack load <package name>`

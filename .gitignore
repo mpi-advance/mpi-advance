@@ -33,3 +33,7 @@
 
 /build
 **/__pycache__/
+
+/stream-triggering
+/MPIPCL
+/locality_aware

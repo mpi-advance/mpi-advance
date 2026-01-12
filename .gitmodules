@@ -1,9 +1,11 @@
 [submodule "MPIPCL"]
 	path = MPIPCL
 	url = https://github.com/mpi-advance/MPIPCL.git
+	
 [submodule "locality_aware"]
 	path = locality_aware
-	url = https://github.com/mpi-advance/locality_aware
+	url = https://github.com/mpi-advance/locality_aware.git
+
 [submodule "stream-triggering"]
 	path = stream-triggering
 	url = https://github.com/mpi-advance/stream-triggering

@@ -1,0 +1,5 @@
+czvnc.llnl.gov:5999
+
+Jane Herriman 1/13/2026 11:24 AM • ssh-copy-id user@machine
+
+/<usr>/workspace ... shared among LC machines

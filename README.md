@@ -3,7 +3,7 @@ This repository contains packages and publicly released libraries that comprise 
 
 - Partitioned Communication: implements basic partitioned communication for MPI 3 compatible implementations (See MPI 4.0 Standard). [MPIPCL](https://github.com/mpi-advance/MPIPCL)
 - Locality_aware: Collective algorithms for topology aware and sparse matrix communication. [Locality_Aware](https://github.com/mpi-advance/locality_aware)
-- Stream-triggering: scheduled triggering of communication function by GPUs. [Stream-Triggering](https://github.com/mpi-advance/stream-triggering
+- Stream-triggering: scheduled triggering of communication function by GPUs. [Stream-Triggering](https://github.com/mpi-advance/stream-triggering)
 
 ## Building
 This repository offers three modes of building, each of which will be explained in more detail below:

@@ -40,7 +40,7 @@ class StreamTriggering(CMakePackage, CudaPackage, ROCmPackage):
     # the license, set checked_by to your Github username.
     license("BSD-3-Clause")
 
-    version("0.5.0", branch="main")
+    version("0.6.0", tag="v0.6.0")
     
     variant("threads", default=True, description="USE Thread backend")
     variant("cuda", default=False, description="Use CUDA backend")

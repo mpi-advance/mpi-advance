@@ -37,7 +37,7 @@ class Mpiadvance(CMakePackage, CudaPackage, ROCmPackage):
 
     license("BSD-3-Clause")
     
-    version("main", branch="experimental", submodules=True)
+    version("main", branch="main", submodules=True)
     
     depends_on("c", type="build")
     depends_on("cxx", type="build")

@@ -62,6 +62,7 @@ jobs:
 
               # Each is a key/value pair, so get path for each
               while read -r key path; do
+               
                   # For each path, find the URL
                   url=$(git config --file .gitmodules --get "submodule.$path.url")
 
@@ -72,6 +73,12 @@ jobs:
                       s#\.git$##
                   ')
 
+
+                  if [ "$repo" = "mpi-advance/MPIPCL" ]; then
+                      echo "Skipping $repo (temporarily excluded)"
+                      continue
+                  fi
+                  
                   echo "Collecting $repo Traffic"
                   collect_repo "$repo"
               done <<< "$PATHS"

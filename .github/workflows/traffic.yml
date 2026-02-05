@@ -74,7 +74,7 @@ jobs:
                   ')
 
 
-                  if [ "$repo" = "mpi-advance/MPIPCL" ]; then
+                  if [ "$repo" = "mpi-advance/MPIPCL" ] || [ "$repo" = "mpi-advance/stream-triggering" ]; then
                       echo "Skipping $repo (temporarily excluded)"
                       continue
                   fi

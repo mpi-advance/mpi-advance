@@ -33,7 +33,7 @@ jobs:
               local REPO_NAME="${FULL_REPO##*/}"
               local OUTPUT="$METRICS_DIR/${REPO_NAME}.csv"
               if [ ! -f $OUTPUT ]; then
-                echo "date,repo,daily_clones,daily_unique_cloners" > $OUTPUT
+                echo "date,daily_clones,daily_unique_cloners" > $OUTPUT
               fi
 
               # get all traffic from yesterday

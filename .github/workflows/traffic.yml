@@ -75,7 +75,7 @@ jobs:
                   echo "Collecting $repo Traffic"
                   collect_repo "$repo"
               done <<< "$PATHS"
-
+          fi
 
       - name: Commit and push
         run: |

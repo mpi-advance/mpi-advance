@@ -72,12 +72,6 @@ jobs:
                       s#^https://github\.com/##;
                       s#\.git$##
                   ')
-
-
-                  if [ "$repo" = "mpi-advance/MPIPCL" ] || [ "$repo" = "mpi-advance/stream-triggering" ]; then
-                      echo "Skipping $repo (temporarily excluded)"
-                      continue
-                  fi
                   
                   echo "Collecting $repo Traffic"
                   collect_repo "$repo"

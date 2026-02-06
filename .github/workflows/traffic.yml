@@ -8,8 +8,11 @@ permissions:
   actions: read
 jobs:
   capture-traffic:
+    # Don't run on forks or pull requests
+    if: >
+      github.repository_owner == 'mpi-advance' &&
+      github.event_name != 'pull_request'    
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
